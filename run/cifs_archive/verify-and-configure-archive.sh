@@ -15,7 +15,7 @@ function check_archive_server_reachable () {
   # shellcheck disable=SC2154
   log_progress "Verifying that the archive server $archiveserver is reachable..."
   local serverunreachable=false
-  hping3 -c 1 -S -p 445 "$archiveserver" 1>/dev/null 2>&1 || serverunreachable=true
+  hping3 -c 1 -S -p $archiveserverport "$archiveserver" 1>/dev/null 2>&1 || serverunreachable=true
 
   if [ "$serverunreachable" = true ]
   then
